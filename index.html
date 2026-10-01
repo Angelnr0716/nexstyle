@@ -148,6 +148,57 @@
     </section>
 
     <!-- PASO 6: Productos destacados -->
+    <section class="py-5 bg-body-tertiary" id="productos">
+      <div class="container">
+        <h2 class="text-center mb-4">Productos destacados</h2>
+        <div class="row row-cols-2 row-cols-lg-3 g-3g-md-4">
+          <!-- Aquí van las tarjetas de producto -->
+          <div class="col" data-categoria="hombre">
+            <div class="card h-100 tarjeta-producto">
+              <span class="badge text-bg-success position-absolute top-0 start-0 m-2">
+                Nuevo
+              </span>
+              <img src="img/camiseta.jpg" class="card-img-top h-auto" width="600" height="750"
+                alt="Camiseta básica blanca de algodón">
+              <div class="card-body">
+                <p class="small text-body-secondary mb-1">Hombre</p>
+                <h3 class="h6 card-title">Camiseta básica</h3>
+                <p class="fw-bold mb-0">$45.000</p>
+              </div>
+              <div class="card-footer bg-transparent border-0 d-flex gap-2 pb-3">
+                <button type="button" class="btn btn-dark btn-sm flex-grow-1 btn-agregar" data-nombre="Camiseta básica"
+                  data-precio="45000">
+                  <i class="bi bi-bag-plus"></i> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-categoria="mujer">
+            <div class="card h-100 tarjeta-producto">
+              <span class="badge text-bg-danger position-absolute top-0 start-0 m-2">
+                -20%
+              </span>
+              <img src="img/vestido.jpg" class="card-img-top h-auto" width="600" height="750"
+                alt="Vestido floral de manga corta">
+              <div class="card-body">
+                <p class="small text-body-secondary mb-1">Mujer</p>
+                <h3 class="h6 card-title">Vestido floral</h3>
+                <p class="mb-0">
+                  <span class="fw-bold text-danger">$120.000</span>
+                  <del class="small text-body-secondary">$150.000</del>
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 d-flex gap-2 pb-3">
+                <button type="button" class="btn btn-dark btn-sm flex-grow-1 btn-agregar" data-nombre="Vestido floral"
+                  data-precio="120000">
+                  <i class="bi bi-bag-plus"></i> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PASO 12: Carrusel de promociones -->
 

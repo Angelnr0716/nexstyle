@@ -142,10 +142,21 @@
       </div>
     </section>
 
-    <!-- PASO 6: Productos destacados -->
+    <!-- PASO 6 y 8: Productos destacados y Filtro -->
     <section class="py-5 bg-body-tertiary" id="productos">
       <div class="container">
         <h2 class="text-center mb-4">Productos destacados</h2>
+
+        <!-- PASO 8: Filtro de productos (Mejorado) -->
+        <div class="d-flex justify-content-center mb-5 overflow-x-auto py-2">
+          <div class="d-flex gap-2 gap-md-3 text-nowrap px-3" role="group" aria-label="Filtro de productos">
+            <button type="button" class="btn-filtro-tech active" data-filtro="todos">Todos</button>
+            <button type="button" class="btn-filtro-tech" data-filtro="celulares">Celulares</button>
+            <button type="button" class="btn-filtro-tech" data-filtro="computacion">Computación</button>
+            <button type="button" class="btn-filtro-tech" data-filtro="accesorios">Accesorios</button>
+          </div>
+        </div>
+
         <div class="row row-cols-2 row-cols-lg-3 g-3g-md-4">
           <!-- Aquí van las tarjetas de producto -->
           <div class="col" data-categoria="accesorios">

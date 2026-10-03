@@ -29,3 +29,38 @@ botonesFiltro.forEach(boton => {
     });
   });
 });
+
+// PASO 9: Agregar al carrito y aviso (toast)
+const carrito = [];
+const contadorCarrito = document.getElementById('contadorCarrito');
+const botonesAgregar = document.querySelectorAll('.btn-agregar');
+const avisoCarrito = document.getElementById('avisoCarrito');
+const avisoProductoNombre = document.getElementById('avisoProductoNombre');
+
+// Función para actualizar el número rojo
+function actualizarContador() {
+  contadorCarrito.textContent = carrito.length;
+}
+
+// Escuchamos nuestro evento personalizado
+document.addEventListener('carrito:cambio', actualizarContador);
+
+botonesAgregar.forEach(boton => {
+  boton.addEventListener('click', () => {
+    // 1. Leer los datos del producto del botón
+    const nombre = boton.getAttribute('data-nombre');
+    const precio = Number(boton.getAttribute('data-precio'));
+
+    // 2. Guardarlo en el arreglo
+    carrito.push({ nombre, precio });
+
+    // 3. Avisar a toda la página que el carrito cambió
+    const eventoCambio = new CustomEvent('carrito:cambio');
+    document.dispatchEvent(eventoCambio);
+
+    // 4. Mostrar el aviso (Toast)
+    avisoProductoNombre.textContent = nombre;
+    const toast = bootstrap.Toast.getOrCreateInstance(avisoCarrito);
+    toast.show();
+  });
+});

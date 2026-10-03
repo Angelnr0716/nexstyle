@@ -286,6 +286,19 @@
 
   <!-- PASO 15: Pie de página -->
 
+  <!-- PASO 9: Contenedor de Toasts (Avisos) -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="avisoCarrito" class="toast text-bg-dark border-0 shadow-lg" role="status" aria-live="polite">
+      <div class="d-flex align-items-center">
+        <div class="toast-body">
+          <i class="bi bi-check-circle-fill text-cyan me-2"></i>
+          <span id="avisoProductoNombre" class="fw-bold"></span> se agregó al carrito.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap 5.3.8 (JavaScript + Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

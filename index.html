@@ -45,7 +45,7 @@
               <a class="nav-link" href="#preguntas">Preguntas</a>
             </li>
           </ul>
-          <button class="btn btn-outline-dark position-relative" type="button">
+          <button class="btn btn-outline-dark position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito" aria-controls="panelCarrito">
             <i class="bi bi-bag"></i> Carrito
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger"
               id="contadorCarrito">0</span>
@@ -295,6 +295,29 @@
           <span id="avisoProductoNombre" class="fw-bold"></span> se agregó al carrito.
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 10: Panel del carrito (Offcanvas) -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="panelCarrito" aria-labelledby="tituloPanelCarrito">
+    <div class="offcanvas-header border-bottom bg-tech-light">
+      <h5 class="offcanvas-title fw-bold" id="tituloPanelCarrito">Tu Carrito</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <ul class="list-group list-group-flush mb-auto" id="listaCarrito">
+        <!-- JS llenará esta lista -->
+      </ul>
+      <div class="mt-4 border-top pt-3">
+        <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+          <span>Total:</span>
+          <span class="text-cyan" id="totalCarrito">$0</span>
+        </div>
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-cyan text-black fw-semibold" id="btnFinalizarCompra" disabled>Finalizar compra</button>
+          <button type="button" class="btn btn-outline-danger" id="btnVaciarCarrito">Vaciar carrito</button>
+        </div>
       </div>
     </div>
   </div>

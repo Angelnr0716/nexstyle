@@ -64,3 +64,89 @@ botonesAgregar.forEach(boton => {
     toast.show();
   });
 });
+
+// PASO 10: Panel del carrito (offcanvas)
+const listaCarrito = document.getElementById('listaCarrito');
+const totalCarrito = document.getElementById('totalCarrito');
+const btnFinalizarCompra = document.getElementById('btnFinalizarCompra');
+const btnVaciarCarrito = document.getElementById('btnVaciarCarrito');
+const panelCarrito = document.getElementById('panelCarrito');
+
+function pintarCarrito() {
+  listaCarrito.innerHTML = '';
+  
+  if (carrito.length === 0) {
+    listaCarrito.innerHTML = '<li class="list-group-item text-center text-body-secondary py-4">Tu carrito está vacío.</li>';
+    btnFinalizarCompra.disabled = true;
+    totalCarrito.textContent = '$0';
+    return;
+  }
+  
+  btnFinalizarCompra.disabled = false;
+  let total = 0;
+  
+  carrito.forEach((producto, indice) => {
+    total += producto.precio;
+    
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
+    
+    const divNombre = document.createElement('div');
+    divNombre.textContent = producto.nombre;
+    
+    const divPrecioCerrar = document.createElement('div');
+    divPrecioCerrar.className = 'd-flex align-items-center gap-3';
+    
+    const spanPrecio = document.createElement('span');
+    spanPrecio.className = 'text-body-secondary';
+    spanPrecio.textContent = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(producto.precio);
+    
+    const btnQuitar = document.createElement('button');
+    btnQuitar.className = 'btn-close btn-sm';
+    btnQuitar.setAttribute('aria-label', 'Quitar');
+    btnQuitar.addEventListener('click', () => {
+      carrito.splice(indice, 1);
+      const eventoCambio = new CustomEvent('carrito:cambio');
+      document.dispatchEvent(eventoCambio);
+    });
+    
+    divPrecioCerrar.appendChild(spanPrecio);
+    divPrecioCerrar.appendChild(btnQuitar);
+    
+    li.appendChild(divNombre);
+    li.appendChild(divPrecioCerrar);
+    
+    listaCarrito.appendChild(li);
+  });
+  
+  totalCarrito.textContent = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(total);
+}
+
+// Escuchar el cambio para repintar la lista
+document.addEventListener('carrito:cambio', pintarCarrito);
+
+// Botón Vaciar Carrito
+btnVaciarCarrito.addEventListener('click', () => {
+  carrito.length = 0; // Vacia el arreglo
+  const eventoCambio = new CustomEvent('carrito:cambio');
+  document.dispatchEvent(eventoCambio);
+});
+
+// Botón Finalizar Compra
+btnFinalizarCompra.addEventListener('click', () => {
+  carrito.length = 0; // Vaciamos para simular compra
+  const eventoCambio = new CustomEvent('carrito:cambio');
+  document.dispatchEvent(eventoCambio);
+  
+  // Cerrar el panel usando la API de Bootstrap
+  const offcanvas = bootstrap.Offcanvas.getInstance(panelCarrito);
+  offcanvas.hide();
+  
+  // Reutilizamos el Toast para agradecer la compra
+  avisoProductoNombre.textContent = '¡Compra finalizada! Gracias por elegir TechZone.';
+  const toast = bootstrap.Toast.getOrCreateInstance(avisoCarrito);
+  toast.show();
+});
+
+// Pintar estado inicial (vacío)
+pintarCarrito();

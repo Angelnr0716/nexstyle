@@ -150,3 +150,61 @@ btnFinalizarCompra.addEventListener('click', () => {
 
 // Pintar estado inicial (vacío)
 pintarCarrito();
+
+// PASO 11: Vista rápida del producto (modal)
+const modalProductoElement = document.getElementById('modalProducto');
+const modalProductoTitulo = document.getElementById('modalProductoTitulo');
+const modalImagen = document.getElementById('modalImagen');
+const modalPrecio = document.getElementById('modalPrecio');
+const modalDescripcion = document.getElementById('modalDescripcion');
+const modalColor = document.getElementById('modalColor');
+const btnModalAgregar = document.getElementById('btnModalAgregar');
+
+let productoEnModal = null;
+
+// Escuchar cuando el modal está a punto de abrirse
+modalProductoElement.addEventListener('show.bs.modal', (evento) => {
+  // El botón (ojo) que abrió el modal
+  const botonOjo = evento.relatedTarget;
+  
+  // Extraer los datos guardados en los atributos data-*
+  const nombre = botonOjo.getAttribute('data-nombre');
+  const precio = Number(botonOjo.getAttribute('data-precio'));
+  const imagen = botonOjo.getAttribute('data-imagen');
+  const descripcion = botonOjo.getAttribute('data-descripcion');
+  
+  // Guardar el producto temporalmente
+  productoEnModal = { nombre, precio };
+  
+  // Llenar el contenido visual del modal
+  modalProductoTitulo.textContent = nombre;
+  modalImagen.src = imagen;
+  modalImagen.alt = nombre;
+  modalDescripcion.textContent = descripcion;
+  modalPrecio.textContent = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(precio);
+});
+
+// Cuando hacen clic en el botón "Agregar" dentro del modal
+btnModalAgregar.addEventListener('click', () => {
+  if (productoEnModal) {
+    const colorElegido = modalColor.value;
+    // Guardamos el nombre sumándole el color
+    const nombreConColor = `${productoEnModal.nombre} (${colorElegido})`;
+    
+    // 1. Agregamos al carrito
+    carrito.push({ nombre: nombreConColor, precio: productoEnModal.precio });
+    
+    // 2. Avisamos a toda la página que hay cambios (actualiza total y lista)
+    const eventoCambio = new CustomEvent('carrito:cambio');
+    document.dispatchEvent(eventoCambio);
+    
+    // 3. Mostramos el Toast de que se agregó
+    avisoProductoNombre.textContent = nombreConColor;
+    const toast = bootstrap.Toast.getOrCreateInstance(avisoCarrito);
+    toast.show();
+    
+    // 4. Cerramos el modal
+    const modalInstance = bootstrap.Modal.getInstance(modalProductoElement);
+    modalInstance.hide();
+  }
+});

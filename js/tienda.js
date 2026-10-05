@@ -173,8 +173,26 @@ modalProductoElement.addEventListener('show.bs.modal', (evento) => {
   const imagen = botonOjo.getAttribute('data-imagen');
   const descripcion = botonOjo.getAttribute('data-descripcion');
   
-  // Guardar el producto temporalmente
-  productoEnModal = { nombre, precio };
+  // Leer colores disponibles ("Valor:Etiqueta,Valor:Etiqueta")
+  const coloresString = botonOjo.getAttribute('data-colores');
+  let opcionesColores = [];
+  if (coloresString) {
+    opcionesColores = coloresString.split(',').map(c => {
+      const partes = c.split(':');
+      return { valor: partes[0], etiqueta: partes[1] || partes[0] };
+    });
+  }
+  
+  // Guardar el producto y sus imágenes por color
+  productoEnModal = {
+    nombre,
+    precio,
+    imagenes: {
+      'Negro': botonOjo.getAttribute('data-imagen-negro') || imagen,
+      'Blanco': botonOjo.getAttribute('data-imagen-blanco') || imagen,
+      'Gris':   botonOjo.getAttribute('data-imagen-gris')  || imagen
+    }
+  };
   
   // Llenar el contenido visual del modal
   modalProductoTitulo.textContent = nombre;
@@ -182,6 +200,35 @@ modalProductoElement.addEventListener('show.bs.modal', (evento) => {
   modalImagen.alt = nombre;
   modalDescripcion.textContent = descripcion;
   modalPrecio.textContent = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(precio);
+
+  // Poblar el <select> de forma dinámica
+  modalColor.innerHTML = '';
+  if (opcionesColores.length > 0) {
+    opcionesColores.forEach(color => {
+      const option = document.createElement('option');
+      option.value = color.valor;
+      option.textContent = color.etiqueta;
+      modalColor.appendChild(option);
+    });
+    
+    // Seleccionar el primero por defecto y actualizar imagen si es necesario
+    modalColor.value = opcionesColores[0].valor;
+    modalImagen.src = productoEnModal.imagenes[modalColor.value] || imagen;
+  } else {
+    // Fallback si no tiene data-colores configurado aún
+    modalColor.innerHTML = '<option value="Unico">Color Único</option>';
+  }
+});
+
+// Cambiar la imagen real al seleccionar un color
+modalColor.addEventListener('change', () => {
+  if (productoEnModal && productoEnModal.imagenes) {
+    const colorSeleccionado = modalColor.value;
+    const nuevaImagen = productoEnModal.imagenes[colorSeleccionado];
+    if (nuevaImagen) {
+      modalImagen.src = nuevaImagen;
+    }
+  }
 });
 
 // Cuando hacen clic en el botón "Agregar" dentro del modal

@@ -48,7 +48,9 @@
               <a class="nav-link" href="#preguntas">Preguntas</a>
             </li>
           </ul>
-          <button class="btn btn-outline-dark position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito" aria-controls="panelCarrito">
+          <button class="btn btn-outline-dark position-relative" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#panelCarrito" aria-controls="panelCarrito"
+            data-bs-title="Ver carrito" data-bs-placement="bottom">
             <i class="bi bi-bag"></i> Carrito
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger"
               id="contadorCarrito">0</span>
@@ -665,6 +667,14 @@
 
     </div>
   </footer>
+
+  <!-- PASO 16: Botón flotante volver arriba -->
+  <button id="btnVolverArriba" type="button"
+    class="btn btn-cyan rounded-circle shadow d-none position-fixed bottom-0 start-0 m-4"
+    aria-label="Volver arriba"
+    data-bs-title="Volver arriba" data-bs-placement="right">
+    <i class="bi bi-arrow-up-short fs-4"></i>
+  </button>
 
   <!-- PASO 11: Vista rápida del producto (Modal) -->
   <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoTitulo" aria-hidden="true">

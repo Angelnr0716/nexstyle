@@ -233,3 +233,26 @@ formSuscripcion.addEventListener('submit', (evento) => {
   formSuscripcion.reset();
   formSuscripcion.classList.remove('was-validated');
 });
+
+// PASO 16: Tooltips y botón «volver arriba»
+
+// 1. Activar todos los tooltips de la página
+const elementosTooltip = document.querySelectorAll('[data-bs-title]');
+elementosTooltip.forEach(el => new bootstrap.Tooltip(el));
+
+// 2. Botón flotante «volver arriba»
+const btnVolverArriba = document.getElementById('btnVolverArriba');
+
+// Mostrar u ocultar según el desplazamiento
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    btnVolverArriba.classList.remove('d-none'); // Mostrar
+  } else {
+    btnVolverArriba.classList.add('d-none');    // Ocultar
+  }
+});
+
+// Subir suavemente al hacer clic
+btnVolverArriba.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

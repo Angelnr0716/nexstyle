@@ -208,3 +208,28 @@ btnModalAgregar.addEventListener('click', () => {
     modalInstance.hide();
   }
 });
+
+// PASO 14: Validación del formulario de suscripción
+const formSuscripcion = document.getElementById('formSuscripcion');
+
+formSuscripcion.addEventListener('submit', (evento) => {
+  // Evitar que la página se recargue
+  evento.preventDefault();
+
+  // Activar los estilos de validación de Bootstrap
+  formSuscripcion.classList.add('was-validated');
+
+  // Revisar si todos los campos son válidos
+  if (!formSuscripcion.checkValidity()) {
+    return; // Si hay errores, detener aquí
+  }
+
+  // Si todo está bien: mostrar aviso de gracias
+  avisoProductoNombre.textContent = '¡Gracias por suscribirte a TechZone!';
+  const toast = bootstrap.Toast.getOrCreateInstance(avisoCarrito);
+  toast.show();
+
+  // Limpiar el formulario y quitar los estilos de validación
+  formSuscripcion.reset();
+  formSuscripcion.classList.remove('was-validated');
+});

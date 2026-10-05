@@ -42,6 +42,9 @@
               <a class="nav-link" href="#productos">Productos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#promociones">Promociones</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#preguntas">Preguntas</a>
             </li>
           </ul>
@@ -332,8 +335,204 @@
     </section>
 
     <!-- PASO 12: Carrusel de promociones -->
+    <section class="py-5" id="promociones">
+      <div class="container">
+        <h2 class="text-center mb-4">Promociones destacadas</h2>
+        <div id="carruselPromos" class="carousel slide rounded-4 overflow-hidden shadow"
+          data-bs-ride="carousel"
+          data-bs-pause="hover">
+
+          <!-- Indicadores (rayitas) -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="0"
+              class="active" aria-current="true" aria-label="Promoción 1"></button>
+            <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="1"
+              aria-label="Promoción 2"></button>
+            <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="2"
+              aria-label="Promoción 3"></button>
+          </div>
+
+          <!-- Diapositivas -->
+          <div class="carousel-inner">
+
+            <!-- Diapositiva 1: Envío gratis -->
+            <div class="carousel-item active" data-bs-interval="5000">
+              <img src="img/promo-1.jpg" class="d-block w-100 h-auto" width="1200" height="675"
+                alt="Envío gratis en tu primer pedido">
+              <div class="carousel-caption d-none d-md-block">
+                <span class="badge bg-cyan text-black mb-2 px-3 py-2 fs-6">Solo por tiempo limitado</span>
+                <h3 class="fw-bold display-6">Envío GRATIS</h3>
+                <p class="lead">En tu primer pedido sin monto mínimo.</p>
+                <a href="#productos" class="btn btn-cyan btn-lg fw-semibold px-4 mt-1">
+                  <i class="bi bi-bag-heart me-2"></i>Comprar ahora
+                </a>
+              </div>
+            </div>
+
+            <!-- Diapositiva 2: Descuento en celulares -->
+            <div class="carousel-item" data-bs-interval="5000">
+              <img src="img/promo-2.jpg" class="d-block w-100 h-auto" width="1200" height="675"
+                alt="Hasta 20% de descuento en celulares seleccionados">
+              <div class="carousel-caption d-none d-md-block">
+                <span class="badge bg-danger mb-2 px-3 py-2 fs-6">Oferta especial</span>
+                <h3 class="fw-bold display-6">Hasta 20 % OFF</h3>
+                <p class="lead">En celulares seleccionados de última generación.</p>
+                <a href="#productos" class="btn btn-danger btn-lg fw-semibold px-4 mt-1">
+                  <i class="bi bi-phone me-2"></i>Ver celulares
+                </a>
+              </div>
+            </div>
+
+            <!-- Diapositiva 3: Accesorios Gaming -->
+            <div class="carousel-item" data-bs-interval="5000">
+              <img src="img/promo-3.jpg" class="d-block w-100 h-auto" width="1200" height="675"
+                alt="Accesorios Gaming con garantía total">
+              <div class="carousel-caption d-none d-md-block">
+                <span class="badge bg-warning text-black mb-2 px-3 py-2 fs-6">Garantía incluida</span>
+                <h3 class="fw-bold display-6">Accesorios Gaming</h3>
+                <p class="lead">Con 1 año de garantía y soporte técnico gratis.</p>
+                <a href="#productos" class="btn btn-warning btn-lg fw-semibold px-4 mt-1 text-black">
+                  <i class="bi bi-controller me-2"></i>Ver accesorios
+                </a>
+              </div>
+            </div>
+
+          </div><!-- /.carousel-inner -->
+
+          <!-- Flecha anterior -->
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#carruselPromos" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+
+          <!-- Flecha siguiente -->
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#carruselPromos" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+
+        </div><!-- /#carruselPromos -->
+      </div>
+    </section>
 
     <!-- PASO 13: Preguntas frecuentes -->
+    <section class="py-5" id="preguntas">
+      <div class="container">
+        <h2 class="text-center mb-2">Preguntas frecuentes</h2>
+        <p class="text-center text-body-secondary mb-5">Todo lo que necesitas saber antes de comprar.</p>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="accordion" id="acordeonPreguntas">
+
+              <!-- Pregunta 1 (empieza abierta) -->
+              <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+                <h3 class="accordion-header">
+                  <button class="accordion-button fw-semibold" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#resp1"
+                    aria-expanded="true" aria-controls="resp1">
+                    <i class="bi bi-truck me-3 text-cyan fs-5"></i>
+                    ¿Cuánto tarda el envío y cuánto cuesta?
+                  </button>
+                </h3>
+                <div id="resp1" class="accordion-collapse collapse show"
+                  data-bs-parent="#acordeonPreguntas">
+                  <div class="accordion-body text-body-secondary">
+                    El envío estándar tarda entre <strong>2 y 5 días hábiles</strong> y tiene un costo de $10.000.
+                    Si tu compra supera los <strong>$150.000</strong>, el envío es completamente gratis.
+                    También ofrecemos envío express en 24 horas con un costo adicional.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pregunta 2 -->
+              <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#resp2"
+                    aria-expanded="false" aria-controls="resp2">
+                    <i class="bi bi-shield-check me-3 text-cyan fs-5"></i>
+                    ¿Qué garantía tienen los productos?
+                  </button>
+                </h3>
+                <div id="resp2" class="accordion-collapse collapse"
+                  data-bs-parent="#acordeonPreguntas">
+                  <div class="accordion-body text-body-secondary">
+                    Todos nuestros productos cuentan con <strong>1 año de garantía</strong> contra defectos de fábrica.
+                    Los celulares y laptops incluyen además garantía extendida opcional de hasta 2 años.
+                    Si tu producto presenta fallas, lo reparamos o reemplazamos sin costo.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pregunta 3 -->
+              <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#resp3"
+                    aria-expanded="false" aria-controls="resp3">
+                    <i class="bi bi-arrow-return-left me-3 text-cyan fs-5"></i>
+                    ¿Puedo devolver un producto si no me gusta?
+                  </button>
+                </h3>
+                <div id="resp3" class="accordion-collapse collapse"
+                  data-bs-parent="#acordeonPreguntas">
+                  <div class="accordion-body text-body-secondary">
+                    Sí. Tienes <strong>30 días calendario</strong> desde la fecha de compra para devolver cualquier producto
+                    en su empaque original y en perfectas condiciones. Te reembolsamos el 100% del valor
+                    o lo cambiamos por otro producto de tu elección.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pregunta 4 -->
+              <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#resp4"
+                    aria-expanded="false" aria-controls="resp4">
+                    <i class="bi bi-credit-card me-3 text-cyan fs-5"></i>
+                    ¿Qué formas de pago aceptan?
+                  </button>
+                </h3>
+                <div id="resp4" class="accordion-collapse collapse"
+                  data-bs-parent="#acordeonPreguntas">
+                  <div class="accordion-body text-body-secondary">
+                    Aceptamos <strong>tarjetas de crédito y débito</strong> (Visa, Mastercard, American Express),
+                    <strong>PSE</strong>, transferencia bancaria, Nequi, Daviplata y pago
+                    <strong>contraentrega</strong>. Las compras con tarjeta pueden pagarse en cuotas sin interés.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pregunta 5 -->
+              <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#resp5"
+                    aria-expanded="false" aria-controls="resp5">
+                    <i class="bi bi-headset me-3 text-cyan fs-5"></i>
+                    ¿Tienen soporte técnico después de la compra?
+                  </button>
+                </h3>
+                <div id="resp5" class="accordion-collapse collapse"
+                  data-bs-parent="#acordeonPreguntas">
+                  <div class="accordion-body text-body-secondary">
+                    ¡Claro que sí! Ofrecemos <strong>soporte técnico gratuito</strong> por chat, correo y
+                    teléfono de lunes a sábado de 8 a.m. a 8 p.m. Para clientes con garantía activa,
+                    el soporte es prioritario con respuesta en menos de 2 horas.
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /#acordeonPreguntas -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+    </section>
 
     <!-- PASO 14: Suscripción -->
   </main>
